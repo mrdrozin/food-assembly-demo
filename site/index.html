@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-replay-source="static">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FOCUS · online monitoring</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./replay.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">◉</span> FOCUS <span class="brand-sub">production intelligence</span></div><div class="mode"><span class="dot"></span> Recorded playback <span class="pill">LAB DEMO</span></div></header>
+<main>
+  <div class="page-title"><div><div class="eyebrow">PRODUCTION MONITORING</div><h1>online monitoring</h1><p>From assembly to completed portions. Two cameras, one timeline.</p></div><div class="take-info"><strong>September 15, 2026</strong><span id="take-info">Loading recording…</span></div></div>
+  <div id="error" class="error" hidden role="alert"></div>
+
+  <section class="video-section panel">
+    <div class="panel-heading camera-heading"><h2>Workstation</h2><label class="view-mode"><span id="view-mode-label">Standard view</span><input id="object-boxes" type="checkbox" role="switch" aria-label="Object bounding boxes"><span class="switch-track" aria-hidden="true"></span></label></div>
+    <div class="video-grid">
+      <div class="camera primary"><div class="camera-stage"><img id="table-image" alt="Overhead camera" decoding="async"><svg id="table-overlay" viewBox="0 0 1280 720" aria-hidden="true"></svg><div class="camera-label"><span class="dot"></span> OVERHEAD <span id="table-frame">—</span></div></div></div>
+      <div class="camera secondary"><div class="camera-stage"><img id="floor-image" alt="Overview camera with ArUco markers" decoding="async"><svg id="floor-overlay" viewBox="0 0 1280 720" aria-hidden="true"></svg><div class="camera-label">OVERVIEW · ArUco <span id="floor-frame">—</span></div></div></div>
+    </div>
+    <div class="transport">
+      <div class="seek-wrap"><input id="seek" type="range" min="0" max="132" step="0.1" value="0" aria-label="Playback time"><div id="seek-markers" class="seek-markers"></div></div>
+      <div id="output-timecodes" class="output-timecodes" aria-label="Completed portions by employee"></div>
+      <p id="seek-feedback" class="seek-feedback" role="status" hidden></p>
+      <div class="transport-row"><div class="transport-buttons"><button id="restart" title="Restart" aria-label="Restart">↺</button><button id="play" class="play" disabled>▶ Play</button><button id="jump" title="Jump to first output">First output ↗</button><button id="end" title="Show recording totals">Show totals →</button></div><div class="transport-options"><span id="time-label">00:00 / 02:12</span><label>Speed <select id="speed"><option value="1">1×</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select></label></div></div>
+    </div>
+
+  </section>
+
+
+  <section class="metrics" aria-label="Key metrics">
+    <article class="metric"><div class="metric-label">COMPLETED PORTIONS <span class="tag auto">AUTO</span></div><div class="metric-value"><span id="total">0</span><small>units</small></div><div class="metric-foot">Persistent detection in the output zone</div></article>
+    <article class="metric"><div class="metric-label">ATTRIBUTED TO EMPLOYEES</div><div class="metric-value"><span id="attributed">0</span><small id="attribution-unit">of 0</small></div><div class="metric-foot" id="attribution-foot">From the assembly zone and ArUco</div></article>
+    <article class="metric"><div class="metric-label">RECORDING TIME</div><div class="metric-value time"><span id="clock">00:00.0</span></div><div class="metric-foot">Verified total: 4 portions · 2 assemblies</div></article>
+  </section>
+
+  <div class="workspace">
+    <section class="panel data-chart">
+      <div class="panel-heading"><h2>Completed portions over time</h2><span class="tag auto">CUMULATIVE</span></div><svg id="chart" viewBox="0 0 900 135" role="img" aria-label="Cumulative completed portion count"></svg>
+      <div class="video-note"><strong>4 portions ≠ 4 assemblies.</strong> Two sandwiches are cut in half. Portions are counted from the original camera observations.</div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel employees"><div class="panel-heading"><h2>Employees</h2><span class="pill">2 OPERATORS</span></div><label class="attribution-select">Attribution source <select id="attribution"><option value="automatic">Automatic only</option><option value="reviewed">With visual review</option></select></label><div id="employees"></div><p class="small-note" id="identity-note">Each product is linked to its assembly zone and the employee identified by ArUco at the time of transfer.</p></section>
+    </aside>
+  </div>
+
+  <section class="panel event-panel"><div class="panel-heading"><div><h2>Event history</h2><span class="panel-sub"><span id="history-source">Automatic CSV logs</span> · original text preserved</span></div><select id="filter" aria-label="Event filter"><option value="all">All events</option><option value="unit">Completed portions</option><option value="segment">Activities</option><option value="minute">Minute summaries</option><option value="take">Recording summaries</option></select></div><div id="events" class="events-list"></div></section>
+  <footer><span>FOCUS · See productivity. Improve production.</span><span>Laboratory demo using one recording. Accuracy in production has not yet been measured.</span></footer>
+</main>
+<dialog id="evidence-dialog"><div class="dialog-heading"><h2 id="evidence-title">Event evidence</h2><button id="close-dialog" aria-label="Close">×</button></div><p id="evidence-note"></p><div id="evidence-images"></div></dialog>
+<script type="module" src="./replay.js"></script>
+</body>
+</html>
