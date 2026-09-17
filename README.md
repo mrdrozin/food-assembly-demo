@@ -1,5 +1,7 @@
 # FOCUS — recorded food assembly demo
 
+[Open the live demo](https://mrdrozin.github.io/food-assembly-demo/?t=end)
+
 Two synchronized cameras, employee attribution, output counts and recorded event history.
 This is playback of a laboratory recording, not a live camera feed.
 
